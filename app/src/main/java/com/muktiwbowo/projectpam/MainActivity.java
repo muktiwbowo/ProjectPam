@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity{
 
         mTabsAdapter = new TabAdapter(getSupportFragmentManager());
 
-        //creating the tabs and adding them to adapter class
+        //creating the tabs and adding them to adapter classshut
         mTabsAdapter.addFragment(new CategoryActivity(), "Kategori");
         mTabsAdapter.addFragment(new About(), "About");
 
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity{
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(),SearchActivity.class);
+                Intent intent = new Intent(v.getContext(),SearchAllActivity.class);
                 startActivityForResult(intent, 0);
             }
         });

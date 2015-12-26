@@ -12,28 +12,28 @@ import java.util.List;
 /**
  * Created by muktiwbowo on 19/12/15.
  */
-public class DatabaseHelper extends SQLiteAssetHelper {
+public class SearchAllHelper extends SQLiteAssetHelper {
     private static final String  DB_NAME  = "search_db";
-    private static final int  DB_VER  = 1;
+    private static final int  DB_VER  = 2;
 
     private static final String  TB_DATA  = "search_tb";
     public static final String  COL_ID  = "id";
     public static final String  COL_ISTILAH = "keyword";
     public static final String  COL_ARTI = "result";
 
-    private static DatabaseHelper dbInstance;
+    private static SearchAllHelper dbInstance;
     private static SQLiteDatabase db;
 
-    private DatabaseHelper(Context context)
+    private SearchAllHelper(Context context)
     {
         super(context, DB_NAME, null, DB_VER);
     }
 
-    public static DatabaseHelper getInstance(Context context)
+    public static SearchAllHelper getInstance(Context context)
     {
         if (dbInstance == null)
         {
-            dbInstance = new DatabaseHelper(context);
+            dbInstance = new SearchAllHelper(context);
             db = dbInstance.getWritableDatabase();
         }
         return dbInstance;
@@ -49,9 +49,9 @@ public class DatabaseHelper extends SQLiteAssetHelper {
         }
     }
 
-    public List<Kamus> getAllKamus()
+    public List<Search> getAllKamus()
     {
-        List<Kamus> lisKamus = new ArrayList<Kamus>();
+        List<Search> lisKamus = new ArrayList<Search>();
 
         Cursor cursor = db.query(TB_DATA, new String[] { COL_ID, COL_ID,
                 COL_ARTI, COL_ISTILAH }, null, null, null, null, COL_ISTILAH);
@@ -61,12 +61,12 @@ public class DatabaseHelper extends SQLiteAssetHelper {
 
             do
             {
-                Kamus kamus = new Kamus();
-                kamus.setResults(cursor.getString(cursor
+                Search search = new Search();
+                search.setResults(cursor.getString(cursor
                         .getColumnIndexOrThrow(COL_ARTI)));
-                kamus.setKeyword(cursor.getString(cursor
+                search.setKeyword(cursor.getString(cursor
                         .getColumnIndexOrThrow(COL_ISTILAH)));
-                lisKamus.add(kamus);
+                lisKamus.add(search);
 
             } while (cursor.moveToNext());
         }

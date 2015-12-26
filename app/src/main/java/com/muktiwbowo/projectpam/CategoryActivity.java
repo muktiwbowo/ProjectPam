@@ -39,7 +39,7 @@ public class CategoryActivity extends Fragment {
                 Toast.makeText(getContext(), position + " is clicked", Toast.LENGTH_SHORT).show();
                 if (position == 0) {
 
-                    Intent intent = new Intent(getActivity(),ListActivityOne.class);
+                    Intent intent = new Intent(getActivity(),AndroidActivity.class);
                     startActivity(intent);
                 }
 

@@ -3,7 +3,7 @@ package com.muktiwbowo.projectpam;
 /**
  * Created by muktiwbowo on 19/12/15.
  */
-public class Kamus {
+public class Search {
     private String keyword;
     private String results;
 

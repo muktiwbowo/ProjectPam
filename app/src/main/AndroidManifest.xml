@@ -25,9 +25,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListActivityOne"/>
-        <activity android:name=".SearchActivity"/>
-        <activity android:name=".ArtiActivity"/>
+        <activity android:name=".SearchAllActivity"/>
+        <activity android:name=".AndroidActivity"/>
     </application>
 
 </manifest>

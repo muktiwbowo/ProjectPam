@@ -3,15 +3,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:gravity="center"
     tools:context=".About">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/about_text"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="About"
-        android:textSize="40sp"
+        android:text="@string/about"
+        android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_centerInParent="true"/>
+        android:paddingBottom="16dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/mukti"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/about_text"
+        android:text="@string/mukti"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/fitri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mukti"
+        android:text="@string/fitri"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/bayu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fitri"
+        android:text="@string/bayu"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+
+    <TextView
+        android:id="@+id/fti"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bayu"
+        android:text="@string/fti"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingTop="32dp"
+        android:gravity="center"/>
+
+
+    <TextView
+        android:id="@+id/uad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fti"
+        android:text="@string/uad"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"/>
 
 </RelativeLayout>

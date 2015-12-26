@@ -1,7 +1,6 @@
 package com.muktiwbowo.projectpam;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,17 +12,20 @@ import android.widget.ListView;
 
 import java.util.List;
 
+import me.drakeet.materialdialog.MaterialDialog;
+
 /**
  * Created by muktiwbowo on 19/12/15.
  */
-public class SearchActivity extends Activity implements TextWatcher,
+public class SearchAllActivity extends Activity implements TextWatcher,
         AdapterView.OnItemClickListener {
 
     private EditText search;
     private ListView lv;
-    private DatabaseHelper dbHelper;
-    private ArrayAdapter<Kamus> adapter;
-    private List<Kamus> listKamus;
+    private SearchAllHelper dbHelper;
+    private ArrayAdapter<Search> adapter;
+    private List<Search> listKamus;
+    final private MaterialDialog mMaterialDialog = new MaterialDialog(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +35,7 @@ public class SearchActivity extends Activity implements TextWatcher,
         lv.setEmptyView(findViewById(R.id.empty));
         search = (EditText) findViewById(R.id.search);
 
-        dbHelper = DatabaseHelper.getInstance(this);
+        dbHelper = SearchAllHelper.getInstance(this);
 
         setData();
 
@@ -44,7 +46,7 @@ public class SearchActivity extends Activity implements TextWatcher,
     private void setData() {
         listKamus = dbHelper.getAllKamus();
 
-        adapter = new ArrayAdapter<Kamus>(this,
+        adapter = new ArrayAdapter<Search>(this,
                 android.R.layout.simple_expandable_list_item_1, listKamus);
         lv.setAdapter(adapter);
 
@@ -66,12 +68,24 @@ public class SearchActivity extends Activity implements TextWatcher,
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Bundle b = new Bundle();
+        /*Bundle b = new Bundle();
         b.putString("istilah", adapter.getItem(position).getKeyword());
         b.putString("arti", adapter.getItem(position).getResults());
 
         Intent i = new Intent(this, ArtiActivity.class);
         i.putExtras(b);
-        startActivity(i);
+        startActivity(i);*/
+
+        mMaterialDialog.setTitle(""+adapter.getItem(position).getKeyword())
+                .setMessage(""+adapter.getItem(position).getResults())
+                .setCanceledOnTouchOutside(true)
+                .setPositiveButton("Back", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mMaterialDialog.dismiss();
+                    }
+                });
+
+        mMaterialDialog.show();
     }
 }
